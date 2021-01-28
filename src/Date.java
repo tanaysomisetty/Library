@@ -1,11 +1,11 @@
 /**
-This class defines the properties of a Date object.
- @author Sailokesh Mondi, Tanay Somisetty
+ * This class defines the properties of a Date object.
+ *
+ * @author Sailokesh Mondi, Tanay Somisetty
  */
 
 import java.util.Calendar;
 import java.util.StringTokenizer;
-
 
 
 public class Date {
@@ -46,7 +46,7 @@ public class Date {
      @param 'none'
      @return String in the format mm/dd/yyyy
      */
-    public String getDate(){
+    public String getDate() {
         return this.month + "/" + this.day + "/" + this.year;
     }
 
@@ -57,18 +57,43 @@ public class Date {
      */
     public boolean isValid() {
 
+        // year Validation
         if (year < 1900 || year > 2021) {
             return false;
-            //} else if ()
+        }
+
+        // Day Validation
+        if ((month == 1 || month == 3 || month == 5 || month == 7
+                || month == 8 || month == 10 || month == 12) && day != 31) {
+            return false;
+        }
+
+        if ((month == 4 || month == 6 || month == 9 || month == 11) && day != 30) {
+            return false;
+        }
+
+        if (month == 2 && isLeapYear() && day != 29) {
+            return false;
 
         }
-        return false;
+
+        if (month == 2 && !isLeapYear() && day != 28) {
+            return false;
+
+        }
+
+        // Month Validation
+        if(month < 1 || month > 12) {
+            return false;
+        }
+
+        return true;
     }
 
     private boolean isLeapYear() {
-        if(year % 4 != 0 ) {
+        if (year % 4 != 0) {
             return false;
-        } else if( year % 100 ==0 && year % 400 == 0 ) {
+        } else if (year % 100 == 0 && year % 400 == 0) {
             return true;
         }
 
@@ -76,12 +101,12 @@ public class Date {
     }
 
     public static void main(String[] args) {
-      Date date = new Date("5/18/2000");
+        Date date = new Date("5/18/2000");
 
-      System.out.println(date.year);
-      System.out.println(date.month);
-      System.out.println(date.day);
-      System.out.println(date.getDate());
+        System.out.println(date.year);
+        System.out.println(date.month);
+        System.out.println(date.day);
+        System.out.println(date.getDate());
 
     }
 
