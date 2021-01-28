@@ -12,12 +12,18 @@ public class Date {
     private int year;
     private int month;
     private int day;
+    public static final int QUADRENNIAL = 4;
+    public static final int CENTENNIAL = 100;
+    public static final int QUATERCENTENNIAL = 400;
+    public static final int InvalidDateOne = 1900;
+    public static final int InvalidDateTwo = 2021;
 
 
     /**
-     This is the constructor to take mm/dd/yyyy and create a Date object.
-     Tokenizes the string with '/' as a deliminator.
-     @param date of the book
+     * This is the constructor to take mm/dd/yyyy and create a Date object.
+     * Tokenizes the string with '/' as a deliminator.
+     *
+     * @param date of the book
      */
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date, "/", false);
@@ -28,9 +34,10 @@ public class Date {
     }
 
     /**
-     This constructor returns today's date.
-     Uses the Calendar class.
-     @param 'none'
+     * This constructor returns today's date.
+     * Uses the Calendar class.
+     *
+     * @param 'none'
      */
     public Date() {
         Calendar today = Calendar.getInstance();
@@ -42,48 +49,51 @@ public class Date {
 
 
     /**
-     Getter method for the date class.
-     @param 'none'
-     @return String in the format mm/dd/yyyy
+     * Getter method for the date class.
+     *
+     * @param 'none'
+     * @return String in the format mm/dd/yyyy
      */
     public String getDate() {
         return this.month + "/" + this.day + "/" + this.year;
     }
 
     /**
-     This method checks to see whether a given date is valid or  not
-     @param 'none'
-     @return true if the date is valid, false otherwise
+     * This method checks to see whether a given date is valid or  not
+     *
+     * @param 'none'
+     * @return true if the date is valid, false otherwise
      */
     public boolean isValid() {
 
         // year Validation
-        if (year < 1900 || year > 2021) {
+        if (year < InvalidDateOne || year > InvalidDateTwo) {
             return false;
         }
 
         // Day Validation
-        if ((month == 1 || month == 3 || month == 5 || month == 7
-                || month == 8 || month == 10 || month == 12) && day != 31) {
+        if ((month == Calendar.JANUARY || month == Calendar.MARCH || month == Calendar.MAY || month == Calendar.JULY
+                || month == Calendar.AUGUST || month == Calendar.OCTOBER || month == Calendar.DECEMBER) && day != 31) {
             return false;
         }
 
-        if ((month == 4 || month == 6 || month == 9 || month == 11) && day != 30) {
+        if ((month == Calendar.APRIL || month == Calendar.JUNE || month == Calendar.SEPTEMBER
+                || month == Calendar.NOVEMBER) && day != 30) {
             return false;
         }
 
-        if (month == 2 && isLeapYear() && day != 29) {
+        if (month == Calendar.FEBRUARY && isLeapYear() && day != 29) {
             return false;
 
         }
 
-        if (month == 2 && !isLeapYear() && day != 28) {
+        if (month == Calendar.FEBRUARY && !isLeapYear() && day != 28) {
             return false;
 
         }
 
         // Month Validation
-        if(month < 1 || month > 12) {
+        if (month < Calendar.JANUARY || month > Calendar.DECEMBER) {
             return false;
         }
 
@@ -91,9 +101,9 @@ public class Date {
     }
 
     private boolean isLeapYear() {
-        if (year % 4 != 0) {
+        if (year % QUADRENNIAL != 0) {
             return false;
-        } else if (year % 100 == 0 && year % 400 == 0) {
+        } else if (year % CENTENNIAL == 0 && year % QUATERCENTENNIAL == 0) {
             return true;
         }
 
