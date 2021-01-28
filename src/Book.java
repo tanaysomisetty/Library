@@ -60,7 +60,7 @@ public class Book {
        String number = this.number;
        String name = this.name;
        String date = this.datePublished.getDate();
-       String availability = (checkedOut) ? "is available." : "is checked out.";
+       String availability = (checkedOut) ? "is checked out." : "is available.";
 
        return "Book#" + number + "::" + name + "::" + date + "::" + availability;
 
@@ -71,6 +71,7 @@ public class Book {
         Date bookDate = new Date();
 
         Book newBook = new Book(bookName, bookDate);
+        System.out.println(newBook.toString());
         System.out.println(newBook.number);
         System.out.println(newBook.name);
         System.out.println(newBook.checkedOut);
@@ -80,6 +81,8 @@ public class Book {
         Book secondBook = newBook;
 
         Book diffBook = new Book("Sherlok Holmes", bookDate);
+
+        System.out.println(diffBook.toString());
 
         System.out.println(newBook.equals(secondBook));
         System.out.println(newBook.equals(diffBook));

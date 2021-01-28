@@ -6,14 +6,17 @@
 
 
 public class Library {
-    private Book[] book;
+    private Book[] books;
     private int numBooks;
+    final static int bagCapacity = 4;
 
     /**
      Default constructor to create an empty bag data structure.
-     @param none
+     @param 'none'
      */
     public Library() {
+        this.books = new Book[bagCapacity];
+        numBooks = 0;
 
     }
 

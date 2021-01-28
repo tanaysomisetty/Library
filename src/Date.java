@@ -13,18 +13,22 @@ public class Date {
     private int day;
 
     /**
-     * This is the constructor to take mm/dd/yyyy and create a Date object
-     *
-     * @param date of the book
+     This is the constructor to take mm/dd/yyyy and create a Date object.
+     Tokenizes the string with '/' as a deliminator.
+     @param date of the book
      */
     public Date(String date) {
+        StringTokenizer st = new StringTokenizer(date, "/", false);
 
-
-
+        this.month = Integer.parseInt(st.nextToken());
+        this.day = Integer.parseInt(st.nextToken());
+        this.year = Integer.parseInt(st.nextToken());
     }
 
     /**
-     * This constructor returns today's date
+     This constructor returns today's date.
+     Uses the Calendar class.
+     @param 'none'
      */
     public Date() {
         Calendar today = Calendar.getInstance();
@@ -32,17 +36,16 @@ public class Date {
         this.year = today.get(today.YEAR);
         this.month = today.get(today.MONTH) + 1;
         this.day = today.get(today.DAY_OF_MONTH);
-
     }
 
 
     /**
      Getter method for the date class.
-     @param "none"
+     @param 'none'
      @return String in the format mm/dd/yyyy
      */
     public String getDate(){
-
+        return this.month + "/" + this.day + "/" + this.year;
     }
 
     /**
@@ -71,11 +74,11 @@ public class Date {
     }
 
     public static void main(String[] args) {
-      Date date = new Date();
+      Date date = new Date("5/18/2000");
       System.out.println(date.year);
       System.out.println(date.month);
       System.out.println(date.day);
-
+      System.out.println(date.getDate());
 
     }
 
