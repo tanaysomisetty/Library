@@ -7,10 +7,12 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 
+
 public class Date {
     private int year;
     private int month;
     private int day;
+
 
     /**
      * This is the constructor to take mm/dd/yyyy and create a Date object
@@ -19,6 +21,15 @@ public class Date {
      */
     public Date(String date) {
 
+        StringTokenizer stringTokenizer = new StringTokenizer(date,"/");
+
+        String strMonth =  stringTokenizer.nextToken();
+        String strDate =  stringTokenizer.nextToken();
+        String strYear =  stringTokenizer.nextToken();
+
+        month = Integer.parseInt(strMonth);
+        day = Integer.parseInt(strDate);
+        year = Integer.parseInt(strYear);
 
 
     }
@@ -42,7 +53,7 @@ public class Date {
      @return String in the format mm/dd/yyyy
      */
     public String getDate(){
-
+        return "";
     }
 
     /**
@@ -71,7 +82,8 @@ public class Date {
     }
 
     public static void main(String[] args) {
-      Date date = new Date();
+
+      Date date = new Date("11/25/1973");
       System.out.println(date.year);
       System.out.println(date.month);
       System.out.println(date.day);
