@@ -7,7 +7,7 @@ public class Kiosk {
 
     /**
      The method that handles the input and output of the program.
-     @param none
+     @param "none"
      */
     public void run() {
 

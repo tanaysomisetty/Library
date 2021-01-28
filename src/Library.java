@@ -1,7 +1,9 @@
+
 /**
  The container class that defines the abstract data type Library to hold library catalog and its operations.
  @author Sailokesh Mondi, Tanay Somisetty
  */
+
 
 public class Library {
     private Book[] book;
@@ -20,9 +22,9 @@ public class Library {
      @param book object to find
      @return index of the book to find
      */
-    private int find(Book book) {
+    /*private int find(Book book) {
 
-    }
+    }*/
 
     /**
      Helper method to grow the capacity by 4.
@@ -45,27 +47,27 @@ public class Library {
      @param book to be removed
      @return true if the book was able to be removed, false otherwise
      */
-    public boolean remove(Book book) {
+    /*public boolean remove(Book book) {
 
-    }
+    }*/
 
     /**
      Checks out a book from the library.
      @param book to be checked out
      @return true if the book was able to be checked out, false otherwise
      */
-    public boolean checkOut(Book book) {
+    /*public boolean checkOut(Book book) {
 
-    }
+    }*/
 
     /**
      Returns a book to the library.
      @param book to be returned
      @return true if able to be returned, false otherwise
      */
-    public boolean returns(Book book) {
+    /*public boolean returns(Book book) {
 
-    }
+    }*/
 
     /**
      Prints the list of books in the bag/library's catalog.
@@ -92,3 +94,4 @@ public class Library {
 
     }
 }
+
