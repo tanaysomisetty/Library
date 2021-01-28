@@ -17,7 +17,7 @@ public class Book {
      @param name of the book and the date object for the date it was published
      */
 
-    public Book(final String name, Date datePublished){
+    public Book(String name, Date datePublished){
         this.number = String.valueOf(this.currentNum);
         this.name = name;
         this.checkedOut = false;
