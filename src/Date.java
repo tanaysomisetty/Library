@@ -15,8 +15,8 @@ public class Date {
     public static final int QUADRENNIAL = 4;
     public static final int CENTENNIAL = 100;
     public static final int QUATERCENTENNIAL = 400;
-    public static final int InvalidDateOne = 1900;
-    public static final int InvalidDateTwo = 2021;
+    public static final int YearThresholdOne = 1900;
+    public static final int YearThresholdTwo = 2021;
 
 
     /**
@@ -66,34 +66,39 @@ public class Date {
      */
     public boolean isValid() {
 
+        int longMonth = 31;
+        int shortMonth = 30;
+        int longFeb = 29;
+        int shortFeb = 28;
+
         // year Validation
-        if (year < InvalidDateOne || year > InvalidDateTwo) {
+        if (year < YearThresholdOne || year > YearThresholdTwo) {
             return false;
         }
 
         // Day Validation
         if ((month == Calendar.JANUARY || month == Calendar.MARCH || month == Calendar.MAY || month == Calendar.JULY
-                || month == Calendar.AUGUST || month == Calendar.OCTOBER || month == Calendar.DECEMBER) && day != 31) {
+                || month == Calendar.AUGUST || month == Calendar.OCTOBER || month == Calendar.DECEMBER) && day > longMonth) {
             return false;
         }
 
         if ((month == Calendar.APRIL || month == Calendar.JUNE || month == Calendar.SEPTEMBER
-                || month == Calendar.NOVEMBER) && day != 30) {
+                || month == Calendar.NOVEMBER) && day > shortMonth) {
             return false;
         }
 
-        if (month == Calendar.FEBRUARY && isLeapYear() && day != 29) {
+        if (month == Calendar.FEBRUARY && isLeapYear() && day > longFeb) {
             return false;
 
         }
 
-        if (month == Calendar.FEBRUARY && !isLeapYear() && day != 28) {
+        if (month == Calendar.FEBRUARY && !isLeapYear() && day > shortFeb) {
             return false;
 
         }
 
         // Month Validation
-        if (month < Calendar.JANUARY || month > Calendar.DECEMBER) {
+        if (month <= Calendar.JANUARY || month > Calendar.DECEMBER) {
             return false;
         }
 
@@ -111,15 +116,35 @@ public class Date {
     }
 
     public static void main(String[] args) {
-        Date date = new Date("5/18/2000");
+        Date test1 = new Date("1/1/1860");
+        System.out.println(test1.getDate());
+        System.out.println(test1.isValid());
 
-        System.out.println(date.year);
-        System.out.println(date.month);
-        System.out.println(date.day);
-        System.out.println(date.getDate());
+        Date test2 = new Date("1/1/2022");
+        System.out.println(test2.getDate());
+        System.out.println(test2.isValid());
+
+        Date test3 = new Date("13/1/2021");
+        System.out.println(test3.getDate());
+        System.out.println(test3.isValid());
+
+        Date test4 = new Date("0/1/2021");
+        System.out.println(test4.getDate());
+        System.out.println(test4.isValid());
+
+        Date test5 = new Date("1/33/2021");
+        System.out.println(test5.getDate());
+        System.out.println(test5.isValid());
+
+        Date test6 = new Date("4/30/2021");
+        System.out.println(test6.getDate());
+        System.out.println(test6.isValid());
+
+        Date test7 = new Date("2/29/2020");
+        System.out.println(test7.getDate());
+        System.out.println(test7.isValid());
+
 
     }
-
-
 }
 

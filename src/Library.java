@@ -8,16 +8,15 @@
 public class Library {
     private Book[] books;
     private int numBooks;
-    final static int bagCapacity = 4;
+    final static int initCapacity = 4; //initial capacity of books
 
     /**
      Default constructor to create an empty bag data structure.
      @param 'none'
      */
     public Library() {
-        this.books = new Book[bagCapacity];
+        this.books = new Book[initCapacity];
         numBooks = 0;
-
     }
 
     /**
@@ -25,15 +24,26 @@ public class Library {
      @param book object to find
      @return index of the book to find
      */
-    /*private int find(Book book) {
+    private int find(Book book) {
+        int number = Integer.valueOf(book.getNumber());
 
-    }*/
+        for (int i = 0; i < this.books.length; i++){
+            Book currBook = books[i];
+            int currNum = Integer.valueOf(currBook.getNumber());
+            if (currNum == number){
+                return i;
+            }
+        }
+
+        return -1;
+    }
 
     /**
      Helper method to grow the capacity by 4.
-     @param none
+     @param 'none'
      */
     private void grow() {
+        int currCapacity = this.books.length;
 
     }
 
@@ -75,15 +85,41 @@ public class Library {
     /**
      Prints the list of books in the bag/library's catalog.
      Prints the list of books with the current sequence.
-     @param none
+     @param 'none'
      */
     public void print() {
 
     }
 
+        private Book [] SelectionSort(Book book) {
+
+        int bookSerialNumberOne = Integer.valueOf(currBook.getNumber());
+                int bookSerialNumberTwo = Integer.valueOf()
+
+
+        for (int i =0 ; i < this.books.length-1; i++) {
+
+            int index = i;
+            for (int j = i+1; j < this.books.length; j++) {
+               if(books[j] < books[i]) {
+
+                   index = j;
+
+               }
+            int smallerNumber = books }
+                                                 [index];
+
+
+        }
+
+
+
+
+    }
+
     /**
      Prints the list of books by datePublished in ascending order contained in the bag/library's catalog
-     @param none
+     @param 'none'
      */
     public void printByDate() {
 
@@ -91,9 +127,13 @@ public class Library {
 
     /**
      Prints the list of books by number in ascending order contained in the bag/library's catalog
-     @param none
+     @param 'none'
      */
     public void printByNumber() {
+
+    }
+
+    public static void main(String[] args){
 
     }
 }
