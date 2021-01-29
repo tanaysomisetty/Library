@@ -66,7 +66,16 @@ public class Book {
 
     }
 
-    public static void main(String[] args) {
+    /**
+     Accessor method that gets a book's serial number.
+     @param 'none'
+     @return a string which is the book's serial number
+     */
+    public String getNumber(){
+       return this.number;
+    }
+
+    /*public static void main(String[] args) {
         String bookName = "Harry Potter";
         Date bookDate = new Date();
 
@@ -90,7 +99,7 @@ public class Book {
         System.out.println(diffBook.number);
 
 
-    }
+    }*/
 
 
 
