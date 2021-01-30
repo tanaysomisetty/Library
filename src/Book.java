@@ -75,6 +75,39 @@ public class Book {
        return this.number;
     }
 
+
+    /**
+     Accessor method that gets a book's Name.
+     @param 'none'
+     @return a string which is the name of the book
+     */
+    public String getName() {
+        return name;
+    }
+
+
+    /**
+     Accessor method that gets book checked out or not
+     @param 'none'
+     @return a boolean value book checked out or not
+     */
+    public boolean isCheckedOut() {
+        return checkedOut;
+    }
+
+
+    /**
+     Accessor method that gets a Date Published.
+     @param 'none'
+     @return a Date which is the published date
+     */
+    public Date getDatePublished() {
+        return datePublished;
+    }
+
+
+
+
     /*public static void main(String[] args) {
         String bookName = "Harry Potter";
         Date bookDate = new Date();

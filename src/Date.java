@@ -115,6 +115,24 @@ public class Date {
         return true;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+
+
+    public int getMonth() {
+        return month;
+    }
+
+
+
+    public int getDay() {
+        return day;
+    }
+
+
+
     public static void main(String[] args) {
         Date test1 = new Date("1/1/1860");
         System.out.println(test1.getDate());
