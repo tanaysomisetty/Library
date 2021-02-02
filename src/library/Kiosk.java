@@ -10,6 +10,8 @@ import java.util.StringTokenizer;
 
 public class Kiosk {
 
+    Library myLibrary = null;
+
     /**
      The method that handles the input and output of the program.
      @param "none"
@@ -34,7 +36,9 @@ public class Kiosk {
 
         String options = "A R O I PA PD PN";
 
-        Library myLibrary = new Library();
+        myLibrary = new Library();
+
+        // Add some books to Library
 
         while (input != "Q"){
             StringTokenizer st = new StringTokenizer(input, ",");
@@ -74,10 +78,18 @@ public class Kiosk {
     }
 
     private void add(Book book) {
-
+       boolean isCheckedOut =  myLibrary.checkOut(book);
+       if(!isCheckedOut) {
+          myLibrary.add(book);
+          myLibrary.checkOut(book);
+       }
     }
 
     private void remove(String number) {
+
+        //Book book = new Book();
+
+        //myLibrary.remove(number);
 
     }
 
