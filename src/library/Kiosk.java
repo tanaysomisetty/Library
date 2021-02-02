@@ -5,12 +5,14 @@
 
 package library;
 
+import java.util.IllegalFormatCodePointException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Kiosk {
 
     Library myLibrary = null;
+    Date myDate = null;
 
     /**
      The method that handles the input and output of the program.
@@ -37,6 +39,7 @@ public class Kiosk {
         String options = "A R O I PA PD PN";
 
         myLibrary = new Library();
+
 
         // Add some books to Library
 
@@ -79,15 +82,25 @@ public class Kiosk {
 
     private void add(Book book) {
        boolean isCheckedOut =  myLibrary.checkOut(book);
-       if(!isCheckedOut) {
+        boolean validDate = myDate.isValid();
+
+        if (!validDate) {
+            System.out.println("Invalid Date!");
+
+        } else if(!isCheckedOut) {
           myLibrary.add(book);
           myLibrary.checkOut(book);
+            System.out.println(book+ "added to the Library.");
        }
+
     }
 
-    private void remove(String number) {
+        private void remove(String number) {
+        // boolean remove = myLibrary.remove();
 
-        //Book book = new Book();
+          //  if(!myLibrary.remove())
+
+       // Book book = new Book();
 
         //myLibrary.remove(number);
 
