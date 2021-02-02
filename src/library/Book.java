@@ -3,6 +3,8 @@
  @author Sailokesh Mondi, Tanay Somisetty
  */
 
+package library;
+
 public class Book {
 
     private String number;
@@ -24,6 +26,19 @@ public class Book {
         this.datePublished = datePublished;
 
         this.currentNum++;
+    }
+
+
+    /**
+     Copy constructor used to clone a Book object
+     @param 'Book' object to be cloned
+     */
+    public Book(Book book){
+        this.number = book.number;
+        this.name = book.name;
+        this.checkedOut = book.checkedOut;
+        this.datePublished = book.datePublished;
+
     }
 
     /**
@@ -85,6 +100,14 @@ public class Book {
         return name;
     }
 
+    /**
+     Modifer method that sets the checkout status as true if false and false if true.
+     @param 'none'
+     */
+    public void setCheckoutStatus(){
+        this.checkedOut = !this.checkedOut;
+    }
+
 
     /**
      Accessor method that gets book checked out or not
@@ -92,7 +115,7 @@ public class Book {
      @return a boolean value book checked out or not
      */
     public boolean isCheckedOut() {
-        return checkedOut;
+        return this.checkedOut;
     }
 
 
