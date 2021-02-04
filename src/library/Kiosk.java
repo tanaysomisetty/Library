@@ -93,7 +93,7 @@ public class Kiosk {
         else {
             Book newBook = new Book(name, newDate);
             myLibrary.add(newBook);
-            System.out.println(newBook.getName() + " added to the Library.");
+            System.out.println(newBook.getName() + " added to the library.");
         }
     }
 

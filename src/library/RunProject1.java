@@ -11,6 +11,7 @@ public class RunProject1 {
      @param 'array' of string arguments
      */
     public static void main(String[] args) {
-        new Kiosk().run();
+        Kiosk kiosk = new Kiosk();
+        kiosk.run();
     }
 }
