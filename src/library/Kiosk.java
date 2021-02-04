@@ -83,6 +83,12 @@ public class Kiosk {
         System.exit(1);
     }
 
+
+    /**
+     Helper method to be called when user inputs Add (A) command.
+     Calls the add method from the Library class
+     @param 'String' for the name of the book, and String for the publish date
+     */
     private void add(String name, String date) {
         Date newDate = new Date(date);
         boolean validDate = newDate.isValid();
@@ -97,23 +103,53 @@ public class Kiosk {
         }
     }
 
+    /**
+     Helper method to be called when user inputs Remove (R) command.
+     Calls the remove method from the Library class
+     @param 'String' for the book's serial number
+     */
     private void remove(String number) {
         Book toBeDeleted = new Book(number);
         boolean removed = myLibrary.remove(toBeDeleted);
         if (removed) {
-            System.out.println("Book#" + number +"removed.");
+            System.out.println("Book#" + number + "removed.");
         }
         else {
             System.out.println("Unable to remove, the library does not have this book");
         }
     }
 
-
+    /**
+     Helper method to be called when user inputs Checking out a Book (O) command.
+     Calls the checkOut method from the Library class
+     @param 'String' for the book's serial number
+     */
     private void checkout(String number) {
+        Book toBeCheckedOut = new Book(number);
+        boolean checkedOut = myLibrary.checkOut(toBeCheckedOut);
+        if (checkedOut) {
+            System.out.println("You've checked out Book#" + number + ". Enjoy!");
+        }
+        else {
+            System.out.println("Book#" + number + " is not available.");
+        }
 
     }
-    private void returns(String number) {
 
+    /**
+     Helper method to be called when user inputs Returning a book (I) command.
+     Calls the returns method from the Library class
+     @param 'String' for the book's serial number
+     */
+    private void returns(String number) {
+        Book toBeReturned = new Book(number);
+        boolean returned = myLibrary.returns(toBeReturned);
+        if (returned) {
+            System.out.println("Book#" + number + " return has completed. Thanks!");
+        }
+        else {
+            System.out.println("Unable to return Book#" + number + ".");
+        }
     }
 
 }
