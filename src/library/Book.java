@@ -30,7 +30,7 @@ public class Book {
 
 
     /**
-     Copy constructor used to clone a Book object
+     Copy constructor used to clone a Book object.
      @param 'Book' object to be cloned
      */
     public Book(Book book){
@@ -40,6 +40,11 @@ public class Book {
         this.datePublished = book.datePublished;
     }
 
+    /**
+     Constructor to create a copy of a book given a serial number.
+     Does not include the name of the book, checked out status, or increase currentNum.
+     @param 'Serial' number
+     */
     public Book(String number){
         this.number = number;
     }
