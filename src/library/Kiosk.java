@@ -11,8 +11,7 @@ import java.util.StringTokenizer;
 
 public class Kiosk {
 
-    Library myLibrary = null;
-    Date myDate = null;
+    private static Library myLibrary = null;
 
     /**
      The method that handles the input and output of the program.
@@ -36,7 +35,7 @@ public class Kiosk {
 
         String input = sc.nextLine();
 
-        String options = "A R O I PA PD PN";
+        String options = "A R O I PA PD PN Q";
 
         myLibrary = new Library();
 
@@ -49,62 +48,66 @@ public class Kiosk {
             if (!options.contains(commandType)) {
                 System.out.println("Invalid command!");
             }
-            else if (commandType == "A") {
+            else if (commandType.equals("A")) {
                 String newName = st.nextToken();
-                Date newDate = new Date(st.nextToken());
-                Book newBook = new Book(newName, newDate);
-
-                add(newBook);
-
+                String newDate = st.nextToken();
+                add(newName, newDate);
             }
-            else if (commandType == "R") {
+            else if (commandType.equals("R")) {
                 remove(st.nextToken());
             }
-            else if (commandType == "O") {
+            else if (commandType.equals("O")) {
                 checkout(st.nextToken());
             }
-            else if (commandType == "I") {
+            else if (commandType.equals("I")) {
                 returns(st.nextToken());
             }
-            else if (commandType == "PA") {
+            else if (commandType.equals("PA")) {
                 myLibrary.print();
             }
-            else if (commandType == "PD") {
+            else if (commandType.equals("PD")) {
                 myLibrary.printByDate();
             }
-            else if (commandType == "PN"){
+            else if (commandType.equals("PN")){
                 myLibrary.printByNumber();
             }
+            else if(commandType.equals("Q")) {
+                System.out.println("Kiosk session ended");
+                System.exit(1);
+            }
+
+            input = sc.nextLine();
 
         }
         System.out.println("Kiosk session ended");
+        System.exit(1);
     }
 
-    private void add(Book book) {
-       boolean isCheckedOut =  myLibrary.checkOut(book);
-        boolean validDate = myDate.isValid();
+    private void add(String name, String date) {
+        Date newDate = new Date(date);
+        boolean validDate = newDate.isValid();
 
-        if (!validDate) {
+        if (!validDate){
             System.out.println("Invalid Date!");
-
-        } else if(!isCheckedOut) {
-          myLibrary.add(book);
-          myLibrary.checkOut(book);
-            System.out.println(book+ "added to the Library.");
-       }
-
+        }
+        else {
+            Book newBook = new Book(name, newDate);
+            myLibrary.add(newBook);
+            System.out.println(newBook.getName() + " added to the Library.");
+        }
     }
 
-        private void remove(String number) {
-        // boolean remove = myLibrary.remove();
-
-          //  if(!myLibrary.remove())
-
-       // Book book = new Book();
-
-        //myLibrary.remove(number);
-
+    private void remove(String number) {
+        Book toBeDeleted = new Book(number);
+        boolean removed = myLibrary.remove(toBeDeleted);
+        if (removed) {
+            System.out.println("Book#" + number +"removed.");
+        }
+        else {
+            System.out.println("Unable to remove, the library does not have this book");
+        }
     }
+
 
     private void checkout(String number) {
 
