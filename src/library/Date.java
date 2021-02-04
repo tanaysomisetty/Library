@@ -75,32 +75,34 @@ public class Date {
 
         // year Validation
         if (year < YearThresholdOne || year > YearThresholdTwo) {
+
             return false;
         }
 
         // Day Validation
-        if ((month == Calendar.JANUARY || month == Calendar.MARCH || month == Calendar.MAY || month == Calendar.JULY
-                || month == Calendar.AUGUST || month == Calendar.OCTOBER || month == Calendar.DECEMBER) && day > longMonth) {
+        if ((month == Calendar.JANUARY + 1 || month == Calendar.MARCH + 1 || month == Calendar.MAY + 1 || month == Calendar.JULY + 1
+                || month == Calendar.AUGUST + 1 || month == Calendar.OCTOBER + 1 || month == Calendar.DECEMBER + 1) && day > longMonth) {
             return false;
         }
 
-        if ((month == Calendar.APRIL || month == Calendar.JUNE || month == Calendar.SEPTEMBER
-                || month == Calendar.NOVEMBER) && day > shortMonth) {
+        if ((month == Calendar.APRIL + 1 || month == Calendar.JUNE + 1 || month == Calendar.SEPTEMBER + 1
+                || month == Calendar.NOVEMBER + 1) && day > shortMonth) {
             return false;
         }
 
-        if (month == Calendar.FEBRUARY && isLeapYear() && day > longFeb) {
+        if (month == Calendar.FEBRUARY + 1 && isLeapYear() && day > longFeb) {
             return false;
 
         }
 
-        if (month == Calendar.FEBRUARY && !isLeapYear() && day > shortFeb) {
+        if (month == Calendar.FEBRUARY + 1 && !isLeapYear() && day > shortFeb) {
+
             return false;
 
         }
 
         // Month Validation
-        if (month <= Calendar.JANUARY || month > Calendar.DECEMBER) {
+        if (month < Calendar.JANUARY + 1 || month > Calendar.DECEMBER + 1) {
             return false;
         }
 
@@ -164,7 +166,13 @@ public class Date {
         System.out.println(test7.getDate());
         System.out.println(test7.isValid());
 
+        Date test8 = new Date("12/1/2005");
+        System.out.println(test8.getDate());
+        System.out.println(test8.isValid());
 
+        Date test9 = new Date("1/31/2020");
+        System.out.println(test9.getDate());
+        System.out.println(test9.isValid());
     }
 }
 

@@ -38,7 +38,10 @@ public class Book {
         this.name = book.name;
         this.checkedOut = book.checkedOut;
         this.datePublished = book.datePublished;
+    }
 
+    public Book(String number){
+        this.number = number;
     }
 
     /**
