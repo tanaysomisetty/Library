@@ -136,39 +136,6 @@ public class Book {
         return datePublished;
     }
 
-
-
-
-    /*public static void main(String[] args) {
-        String bookName = "Harry Potter";
-        Date bookDate = new Date();
-
-        Book newBook = new Book(bookName, bookDate);
-        System.out.println(newBook.toString());
-        System.out.println(newBook.number);
-        System.out.println(newBook.name);
-        System.out.println(newBook.checkedOut);
-        System.out.println(newBook.datePublished);
-        System.out.println(newBook.currentNum);
-
-        Book secondBook = newBook;
-
-        Book diffBook = new Book("Sherlok Holmes", bookDate);
-
-        System.out.println(diffBook.toString());
-
-        System.out.println(newBook.equals(secondBook));
-        System.out.println(newBook.equals(diffBook));
-
-        System.out.println(diffBook.number);
-
-
-    }*/
-
-
-
-
-
 }
 
 

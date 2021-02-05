@@ -1,7 +1,6 @@
 /**
- * This class defines the properties of a Date object.
- *
- * @author Sailokesh Mondi, Tanay Somisetty
+ This class defines the properties of a Date object.
+ @author Sailokesh Mondi, Tanay Somisetty
  */
 
 package library;
@@ -22,10 +21,9 @@ public class Date {
 
 
     /**
-     * This is the constructor to take mm/dd/yyyy and create a Date object.
-     * Tokenizes the string with '/' as a deliminator.
-     *
-     * @param date of the book
+     This is the constructor to take mm/dd/yyyy and create a Date object.
+     Tokenizes the string with '/' as a deliminator.
+     @param date of the book
      */
     public Date(String date) {
         StringTokenizer st = new StringTokenizer(date, "/", false);
@@ -36,10 +34,9 @@ public class Date {
     }
 
     /**
-     * This constructor returns today's date.
-     * Uses the Calendar class.
-     *
-     * @param 'none'
+     This constructor returns today's date.
+     Uses the Calendar class.
+     @param 'none'
      */
     public Date() {
         Calendar today = Calendar.getInstance();
@@ -51,20 +48,18 @@ public class Date {
 
 
     /**
-     * Getter method for the date class.
-     *
-     * @param 'none'
-     * @return String in the format mm/dd/yyyy
+     Getter method for the date class.
+     @param 'none'
+     @return String in the format mm/dd/yyyy
      */
     public String getDate() {
         return this.month + "/" + this.day + "/" + this.year;
     }
 
     /**
-     * This method checks to see whether a given date is valid or  not
-     *
-     * @param 'none'
-     * @return true if the date is valid, false otherwise
+     This method checks to see whether a given date is valid or  not
+     @param 'none'
+     @return true if the date is valid, false otherwise
      */
     public boolean isValid() {
 
@@ -73,11 +68,20 @@ public class Date {
         int longFeb = 29;
         int shortFeb = 28;
 
-        // year Validation
-        if (year < YearThresholdOne || year > YearThresholdTwo) {
 
+        Date todayDate = new Date();
+
+        int currentDay = todayDate.day;
+        int currentMonth = todayDate.month;
+
+        // year Validation
+        if (year < YearThresholdOne || year >= YearThresholdTwo) {
+            if((year == YearThresholdTwo) && (month <= currentMonth && month >= 1) && (day <= currentDay && day >= 1)) {
+                return true;
+            }
             return false;
         }
+
 
         // Day Validation
         if ((month == Calendar.JANUARY + 1 || month == Calendar.MARCH + 1 || month == Calendar.MAY + 1 || month == Calendar.JULY + 1
@@ -173,6 +177,15 @@ public class Date {
         Date test9 = new Date("2/3/2021");
         System.out.println(test9.getDate());
         System.out.println(test9.isValid());
+
+        Date test10 = new Date("3/29/2021");
+        System.out.println(test10.getDate());
+        System.out.println(test10.isValid());
+
+        Date test11 = new Date();
+        System.out.println(test11.getDate());
+        System.out.println(test11.isValid());
+
     }
 }
 

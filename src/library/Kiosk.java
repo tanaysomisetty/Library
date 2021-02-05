@@ -112,7 +112,7 @@ public class Kiosk {
         Book toBeDeleted = new Book(number);
         boolean removed = myLibrary.remove(toBeDeleted);
         if (removed) {
-            System.out.println("Book#" + number + "removed.");
+            System.out.println("Book#" + number + " removed.");
         }
         else {
             System.out.println("Unable to remove, the library does not have this book");
